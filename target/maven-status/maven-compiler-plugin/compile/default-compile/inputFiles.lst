@@ -1,0 +1,4 @@
+/home/ec2-user/flightservices-2/flightservices-2/src/main/java/com/tus/flight/model/Flight.java
+/home/ec2-user/flightservices-2/flightservices-2/src/main/java/com/tus/flight/repo/FlightRepository.java
+/home/ec2-user/flightservices-2/flightservices-2/src/main/java/com/tus/flight/FlightservicesApplication.java
+/home/ec2-user/flightservices-2/flightservices-2/src/main/java/com/tus/flight/controller/FlightController.java
