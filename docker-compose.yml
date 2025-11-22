@@ -1,3 +1,4 @@
+# docker-compose.yml
 version: '3.8'
 services:
   # MySQL Database Container
@@ -13,19 +14,26 @@ services:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-ppassword"]
+      timeout: 30s
       retries: 10
-      start_period: 30s
-    command: --default-authentication-plugin=mysql_native_password
+      start_period: 40s
+      interval: 10s
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
     restart: unless-stopped
 
   # Spring Boot Application Container
   flight-app:
-    image: flightservices-app1  # Your existing image name
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: flight-app
     ports:
       - "8080:8080"
@@ -37,10 +45,26 @@ services:
     volumes:
       - ./logs:/app/logs
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/flightdb
+      # Database Configuration
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/flightdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
+      
+      # JPA Configuration
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+      
+      # Server Configuration
+      SERVER_PORT: "8080"
+      
+      # Logging Configuration
+      LOGGING_FILE_NAME: /app/logs/flight-app.log
+      LOGGING_LEVEL_COM_TUS_FLIGHT: DEBUG
+      
+      # Application Configuration
+      SPRING_APPLICATION_NAME: flight-service
     restart: unless-stopped
 
 volumes:
