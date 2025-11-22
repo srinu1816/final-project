@@ -261,3 +261,325 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x04
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-22 10:15:07 [main] INFO  c.t.flight.FlightservicesApplication - Starting FlightservicesApplication v0.0.1-SNAPSHOT using Java 17.0.17 with PID 1 (/app/target/flightservices-0.0.1-SNAPSHOT.jar started by root in /app)
+2025-11-22 10:15:07 [main] DEBUG c.t.flight.FlightservicesApplication - Running with Spring Boot v3.1.4, Spring v6.0.12
+2025-11-22 10:15:07 [main] INFO  c.t.flight.FlightservicesApplication - The following 1 profile is active: "default"
+2025-11-22 10:15:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-22 10:15:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 1 JPA repository interfaces.
+2025-11-22 10:15:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-11-22 10:15:10 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-22 10:15:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+2025-11-22 10:15:10 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-22 10:15:10 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2791 ms
+2025-11-22 10:15:11 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-22 10:15:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+2025-11-22 10:15:11 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2025-11-22 10:15:11 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-11-22 10:15:11 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-22 10:15:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-22 10:15:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f6962ba
+2025-11-22 10:15:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-22 10:15:12 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-11-22 10:15:13 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-22 10:15:13 [main] DEBUG org.hibernate.SQL - 
+    alter table flight 
+       modify column id bigint not null auto_increment
+2025-11-22 10:15:13 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table flight 
+       modify column id bigint not null auto_increment" via JDBC [Referencing column 'FLIGHT_ID' and referenced column 'id' in foreign key constraint 'reservation_ibfk_2' are incompatible.]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table flight 
+       modify column id bigint not null auto_increment" via JDBC [Referencing column 'FLIGHT_ID' and referenced column 'id' in foreign key constraint 'reservation_ibfk_2' are incompatible.]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:92)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:514)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:293)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1455)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1158)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:932)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at com.tus.flight.FlightservicesApplication.main(FlightservicesApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:95)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:65)
+Caused by: java.sql.SQLException: Referencing column 'FLIGHT_ID' and referenced column 'id' in foreign key constraint 'reservation_ibfk_2' are incompatible.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:78)
+	... 46 common frames omitted
+2025-11-22 10:15:13 [main] DEBUG org.hibernate.SQL - 
+    alter table flight 
+       modify column estimated_departure_time time(6)
+2025-11-22 10:15:13 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-22 10:15:14 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-22 10:15:14 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 5 endpoint(s) beneath base path '/actuator'
+2025-11-22 10:15:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-11-22 10:15:14 [main] INFO  c.t.flight.FlightservicesApplication - Started FlightservicesApplication in 7.576 seconds (process running for 8.245)
+2025-11-22 10:19:19 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-22 10:19:19 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-22 10:19:19 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-11-22 10:19:19 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 10:19:19 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 10:19:19 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 182 ms
+2025-11-22 10:19:19 [http-nio-8080-exec-1] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@181e4b3e, com.tus.flight.model.Flight@34df7de, com.tus.flight.model.Flight@5a0e2459, com.tus.flight.model.Flight@3cbb498b, com.tus.flight.model.Flight@5f70696f, com.tus.flight.model.Flight@336f9658, com.tus.flight.model.Flight@18684080, com.tus.flight.model.Flight@7e79b517, com.tus.flight.model.Flight@229e90a6, com.tus.flight.model.Flight@6d8c0ffb]
+2025-11-22 11:27:07 [http-nio-8080-exec-7] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:27:07 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:27:07 [http-nio-8080-exec-7] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 10 ms
+2025-11-22 11:27:07 [http-nio-8080-exec-7] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@14a8b7ec, com.tus.flight.model.Flight@315c3892, com.tus.flight.model.Flight@3a0da01e, com.tus.flight.model.Flight@412097e2, com.tus.flight.model.Flight@17f43880, com.tus.flight.model.Flight@52ae321b, com.tus.flight.model.Flight@70150614, com.tus.flight.model.Flight@43e6ed68, com.tus.flight.model.Flight@75e0fdac, com.tus.flight.model.Flight@56fd37e1]
+2025-11-22 11:52:39 [http-nio-8080-exec-10] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:39 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:39 [http-nio-8080-exec-10] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 8 ms
+2025-11-22 11:52:39 [http-nio-8080-exec-10] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@51bed24a, com.tus.flight.model.Flight@35670fed, com.tus.flight.model.Flight@628fbc65, com.tus.flight.model.Flight@72fbcfca, com.tus.flight.model.Flight@55f06f5d, com.tus.flight.model.Flight@58e51a69, com.tus.flight.model.Flight@4716e984, com.tus.flight.model.Flight@6b3feb33, com.tus.flight.model.Flight@3d63eb8e, com.tus.flight.model.Flight@4d259819]
+2025-11-22 11:52:41 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:41 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:41 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:52:41 [http-nio-8080-exec-1] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@577a71ce, com.tus.flight.model.Flight@2ea56cd1, com.tus.flight.model.Flight@3d354623, com.tus.flight.model.Flight@59031c13, com.tus.flight.model.Flight@5df3e2fc, com.tus.flight.model.Flight@58b5ce77, com.tus.flight.model.Flight@4fa68f1c, com.tus.flight.model.Flight@e04f17f, com.tus.flight.model.Flight@4c220641, com.tus.flight.model.Flight@3a92bfc4]
+2025-11-22 11:52:41 [http-nio-8080-exec-2] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:41 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:41 [http-nio-8080-exec-2] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:52:41 [http-nio-8080-exec-2] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@66d14f01, com.tus.flight.model.Flight@1b34fadf, com.tus.flight.model.Flight@1a8486f, com.tus.flight.model.Flight@498975f8, com.tus.flight.model.Flight@25cc928f, com.tus.flight.model.Flight@191266eb, com.tus.flight.model.Flight@5abaae96, com.tus.flight.model.Flight@589e268c, com.tus.flight.model.Flight@19078ffa, com.tus.flight.model.Flight@1328970f]
+2025-11-22 11:52:42 [http-nio-8080-exec-3] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:42 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:42 [http-nio-8080-exec-3] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:52:42 [http-nio-8080-exec-3] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@6cb36a3c, com.tus.flight.model.Flight@6fca2b96, com.tus.flight.model.Flight@7443ff43, com.tus.flight.model.Flight@5a5c5af5, com.tus.flight.model.Flight@2d493908, com.tus.flight.model.Flight@136121ac, com.tus.flight.model.Flight@78b37d64, com.tus.flight.model.Flight@40800b75, com.tus.flight.model.Flight@24e5eb14, com.tus.flight.model.Flight@3e93c265]
+2025-11-22 11:52:42 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:42 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:42 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 6 ms
+2025-11-22 11:52:42 [http-nio-8080-exec-4] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@c009d38, com.tus.flight.model.Flight@3936495a, com.tus.flight.model.Flight@16294434, com.tus.flight.model.Flight@6b286be1, com.tus.flight.model.Flight@6349d2e1, com.tus.flight.model.Flight@683e2b4b, com.tus.flight.model.Flight@346ada9c, com.tus.flight.model.Flight@1c35d893, com.tus.flight.model.Flight@3146cf2e, com.tus.flight.model.Flight@283bde3e]
+2025-11-22 11:52:42 [http-nio-8080-exec-5] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:42 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:42 [http-nio-8080-exec-5] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:52:42 [http-nio-8080-exec-5] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@3dc498, com.tus.flight.model.Flight@1e0dfd3a, com.tus.flight.model.Flight@1dd8b967, com.tus.flight.model.Flight@55c2d33a, com.tus.flight.model.Flight@3b35c41e, com.tus.flight.model.Flight@4a201a6f, com.tus.flight.model.Flight@12eb81cd, com.tus.flight.model.Flight@51f3cba9, com.tus.flight.model.Flight@44f3f0bd, com.tus.flight.model.Flight@e4a792e]
+2025-11-22 11:52:43 [http-nio-8080-exec-6] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:52:43 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:52:43 [http-nio-8080-exec-6] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:52:43 [http-nio-8080-exec-6] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@14fc9ef7, com.tus.flight.model.Flight@7d3c86ae, com.tus.flight.model.Flight@7133246d, com.tus.flight.model.Flight@448275aa, com.tus.flight.model.Flight@347940eb, com.tus.flight.model.Flight@2de9b93c, com.tus.flight.model.Flight@4591f0a0, com.tus.flight.model.Flight@1269e29d, com.tus.flight.model.Flight@6ce98623, com.tus.flight.model.Flight@c29e2db]
+2025-11-22 11:54:13 [http-nio-8080-exec-10] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'id' for method parameter type Long is not present]
+2025-11-22 11:54:39 [http-nio-8080-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'id' for method parameter type Long is not present]
+2025-11-22 11:55:52 [http-nio-8080-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'id' for method parameter type Long is not present]
+2025-11-22 11:56:09 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:56:09 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:56:09 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 6 ms
+2025-11-22 11:56:09 [http-nio-8080-exec-4] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@37fa593c, com.tus.flight.model.Flight@13e61957, com.tus.flight.model.Flight@775facf5, com.tus.flight.model.Flight@2bfa8d78, com.tus.flight.model.Flight@4e2c1282, com.tus.flight.model.Flight@6da396b1, com.tus.flight.model.Flight@6791b7f4, com.tus.flight.model.Flight@187f7733, com.tus.flight.model.Flight@36e9debc, com.tus.flight.model.Flight@470ec0ce]
+2025-11-22 11:57:28 [http-nio-8080-exec-7] INFO  o.a.coyote.http11.Http11Processor - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xa00x010x000x060x9c0x030x030xafl{~0x020x050xae\0xe6e0xe10xc40xd80xe2&}0xc80x040x9d0x060x990x160x05]W)0xb00xe50x8e0xdd0xf1' ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:264)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-22 11:57:30 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 11:57:30 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 11:57:30 [http-nio-8080-exec-1] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 7 ms
+2025-11-22 11:57:30 [http-nio-8080-exec-1] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@1698c182, com.tus.flight.model.Flight@64ca697b, com.tus.flight.model.Flight@71cdf8a, com.tus.flight.model.Flight@1bd9e772, com.tus.flight.model.Flight@4b9db15a, com.tus.flight.model.Flight@7c2b88e3, com.tus.flight.model.Flight@1daae863, com.tus.flight.model.Flight@491c7ed3, com.tus.flight.model.Flight@6fad01cb, com.tus.flight.model.Flight@4fe1e04d]
+2025-11-22 12:01:28 [http-nio-8080-exec-6] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 12:01:28 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 12:01:28 [http-nio-8080-exec-6] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 6 ms
+2025-11-22 12:01:28 [http-nio-8080-exec-6] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@3f37bb5c, com.tus.flight.model.Flight@70269c7a, com.tus.flight.model.Flight@37123efb, com.tus.flight.model.Flight@49b495e3, com.tus.flight.model.Flight@4bdb2ad2, com.tus.flight.model.Flight@f5aba9f, com.tus.flight.model.Flight@2919a869, com.tus.flight.model.Flight@44ef3b24, com.tus.flight.model.Flight@567014d1, com.tus.flight.model.Flight@ca4c2c2]
+2025-11-22 12:33:10 [http-nio-8080-exec-2] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 12:33:10 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 12:33:10 [http-nio-8080-exec-2] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 6 ms
+2025-11-22 12:33:10 [http-nio-8080-exec-2] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@1d7b22ba, com.tus.flight.model.Flight@f61d4fa, com.tus.flight.model.Flight@4416485, com.tus.flight.model.Flight@1304f3a8, com.tus.flight.model.Flight@57ae7d80, com.tus.flight.model.Flight@5669b58b, com.tus.flight.model.Flight@5983968f, com.tus.flight.model.Flight@6daea7a4, com.tus.flight.model.Flight@49c895ec, com.tus.flight.model.Flight@5216b4b3]
+2025-11-22 12:33:11 [http-nio-8080-exec-3] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 12:33:11 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 12:33:11 [http-nio-8080-exec-3] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 8 ms
+2025-11-22 12:33:11 [http-nio-8080-exec-3] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@e7f23eb, com.tus.flight.model.Flight@3670a9a9, com.tus.flight.model.Flight@6d204a3c, com.tus.flight.model.Flight@40b96378, com.tus.flight.model.Flight@372e60ff, com.tus.flight.model.Flight@420ba52, com.tus.flight.model.Flight@6bbe6140, com.tus.flight.model.Flight@60177dec, com.tus.flight.model.Flight@247ad089, com.tus.flight.model.Flight@25891c7e]
+2025-11-22 12:33:11 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Request received to fetch all flights
+2025-11-22 12:33:11 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        f1_0.id,
+        f1_0.arrival_city,
+        f1_0.date_of_departure,
+        f1_0.departure_city,
+        f1_0.estimated_departure_time,
+        f1_0.flight_number,
+        f1_0.operating_airlines 
+    from
+        flight f1_0
+2025-11-22 12:33:11 [http-nio-8080-exec-4] INFO  c.t.f.controller.FlightController - GET /api/v1/flights - Successfully retrieved 10 flights in 6 ms
+2025-11-22 12:33:11 [http-nio-8080-exec-4] DEBUG c.t.f.controller.FlightController - Flight details: [com.tus.flight.model.Flight@310e123c, com.tus.flight.model.Flight@2cf07af2, com.tus.flight.model.Flight@11dc937e, com.tus.flight.model.Flight@6efbef1b, com.tus.flight.model.Flight@2f259f0a, com.tus.flight.model.Flight@2d47f6, com.tus.flight.model.Flight@751f73ee, com.tus.flight.model.Flight@44add961, com.tus.flight.model.Flight@47f3d331, com.tus.flight.model.Flight@2d0b3ece]

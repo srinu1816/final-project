@@ -1,5 +1,4 @@
-# docker-compose.yml
-version: '3.8'
+# Updated docker-compose.yml
 services:
   # MySQL Database Container
   mysql-db:
@@ -31,9 +30,7 @@ services:
 
   # Spring Boot Application Container
   flight-app:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: flightservices-app1:latest  # Use pre-built image
     container_name: flight-app
     ports:
       - "8080:8080"
@@ -62,9 +59,6 @@ services:
       # Logging Configuration
       LOGGING_FILE_NAME: /app/logs/flight-app.log
       LOGGING_LEVEL_COM_TUS_FLIGHT: DEBUG
-      
-      # Application Configuration
-      SPRING_APPLICATION_NAME: flight-service
     restart: unless-stopped
 
 volumes:
