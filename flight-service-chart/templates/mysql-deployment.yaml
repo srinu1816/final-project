@@ -1,0 +1,85 @@
+# templates/mysql-deployment.yaml
+{{- if .Values.database.enabled }}
+---
+# MySQL Deployment (Simple - No Init Container)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}-mysql-deployment
+  labels:
+    app: {{ .Values.app.name }}-mysql
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}-mysql
+    spec:
+      containers:
+      - name: mysql
+        image: "{{ .Values.database.image }}"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "{{ .Values.database.rootPassword }}"
+        - name: MYSQL_DATABASE
+          value: "{{ .Values.database.name }}"
+        ports:
+        - containerPort: {{ .Values.database.port }}
+          name: mysql
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+        args:
+        - --default-authentication-plugin=mysql_native_password
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
+        # Simple TCP probes (no MySQL commands needed)
+        readinessProbe:
+          tcpSocket:
+            port: 3306
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: 3306
+          initialDelaySeconds: 60
+          periodSeconds: 20
+          timeoutSeconds: 5
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: mysql-data
+        emptyDir: {}
+---
+# MySQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.database.host }}
+  labels:
+    app: {{ .Values.app.name }}-mysql
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  ports:
+  - port: {{ .Values.database.port }}
+    targetPort: mysql
+  selector:
+    app: {{ .Values.app.name }}-mysql
+  clusterIP: None
+{{- end }}

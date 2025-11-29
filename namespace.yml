@@ -1,0 +1,7 @@
+# namespace.yml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flight-service
+  labels:
+    name: flight-service

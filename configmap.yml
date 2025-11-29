@@ -1,0 +1,14 @@
+# configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flight-app-config
+  namespace: flight-service
+data:
+  application.properties: |
+    spring.datasource.url=jdbc:mysql://mysql-service:3306/flightdb
+    spring.datasource.username=root
+    spring.datasource.password=password
+    spring.jpa.hibernate.ddl-auto=update
+    server.port=8080
+    logging.level.com.tus.flight=DEBUG

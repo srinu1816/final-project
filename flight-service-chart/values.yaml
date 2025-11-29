@@ -1,0 +1,67 @@
+# values.yaml
+# Default values for flight-service-chart
+
+# Application Configuration
+replicaCount: 1  # Start with 1 for debugging
+
+image:
+  repository: srinu1816/flightservices
+  tag: latest
+  pullPolicy: IfNotPresent
+
+app:
+  name: flight-app
+  port: 8080  # CHANGED: Use 8080 instead of 8000
+  environment: production
+  healthCheckPath: /actuator/health  # CHANGED: Spring Boot uses /actuator/health
+
+# Database Configuration
+database:
+  enabled: true
+  image: mysql:8.0
+  host: flight-mysql-service
+  port: 3306
+  name: flightdb
+  username: root
+  password: password
+  rootPassword: password
+  storage: 1Gi  # REDUCED: Start with smaller storage
+  storageClass: ""  # Let Kubernetes use default
+
+# Service Configuration
+service:
+  type: NodePort
+  port: 8080  # CHANGED: Match app port
+  nodePort: 30080
+
+# Resource Configuration - REDUCED for debugging
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "200m"
+
+# Liveness and Readiness Probes - ADJUSTED
+probes:
+  liveness:
+    path: /actuator/health  # CHANGED: Spring Boot health endpoint
+    initialDelaySeconds: 120  # INCREASED: Give app more time to start
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /actuator/health  # CHANGED: Spring Boot health endpoint
+    initialDelaySeconds: 120  # INCREASED
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# Java Configuration
+java:
+  opts: "-Xmx256m -Xms128m"  # REDUCED: Smaller memory for debugging
+
+# Logging Configuration
+logging:
+  level: "DEBUG"

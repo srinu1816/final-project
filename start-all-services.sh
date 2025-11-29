@@ -3,6 +3,7 @@ echo "=== Starting All Services ==="
 
 # 1. Start Docker
 echo "1. Starting Docker..."
+sudo chmod 666 /var/run/docker.sock
 sudo systemctl start docker
 sleep 5
 

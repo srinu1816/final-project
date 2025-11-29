@@ -1,0 +1,36 @@
+# templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.app.name }}-config
+  labels:
+    app: {{ .Values.app.name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  application.properties: |
+    # Database Configuration
+    spring.datasource.url=jdbc:mysql://{{ .Values.database.host }}:{{ .Values.database.port }}/{{ .Values.database.name }}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    spring.datasource.username={{ .Values.database.username }}
+    spring.datasource.password={{ .Values.database.password }}
+    
+    # JPA Configuration
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+    
+    # Server Configuration
+    server.port={{ .Values.app.port }}
+    
+    # Logging Configuration
+    logging.level.com.tus.flight={{ .Values.logging.level }}
+    logging.level.org.springframework.web=INFO
+    logging.level.org.hibernate=INFO
+    
+    # Application Configuration
+    spring.application.name={{ .Values.app.name }}
+    
+    # Health Check Configuration
+    management.endpoint.health.enabled=true
+    management.endpoints.web.exposure.include=health
