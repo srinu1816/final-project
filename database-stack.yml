@@ -13,7 +13,7 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - db-network
+      - db-stack_db-network
     deploy:
       replicas: 1
       placement:
@@ -32,11 +32,18 @@ services:
       - --default-authentication-plugin=mysql_native_password
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 volumes:
   mysql_data:
+    driver: local
 
 networks:
-  db-network:
+  db-stack_db-network:
     driver: overlay
     attachable: true
